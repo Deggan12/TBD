@@ -22,15 +22,22 @@
   <main>
     <section id="order">
       <h2>Place an Order</h2>
-      <form>
+      <form id="add-to-cart-form" onsubmit="return false;">
         <label for="product">Product:</label>
         <input type="text" id="product" name="product" required>
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" min="1" required>
+        <button type="button" onclick="addToCart()">Add to Cart</button>
+      </form>
+      <h3>Your Cart</h3>
+      <ul id="cart-list"></ul>
+      <form id="submit-order-form">
         <label for="customer">Your Name:</label>
         <input type="text" id="customer" name="customer" required>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" placeholder="Any special requests?"></textarea>
         <button type="submit">Submit Order</button>
       </form>
     </section>
@@ -38,5 +45,46 @@
   <footer>
     <p>&copy; 2025 Your Bakery Name. All rights reserved.</p>
   </footer>
+  <script>
+    // Cart logic
+    let cart = [];
+    function addToCart() {
+      const product = document.getElementById('product').value.trim();
+      const quantity = parseInt(document.getElementById('quantity').value, 10);
+      if (!product || !quantity || quantity < 1) return;
+      cart.push({ product, quantity });
+      renderCart();
+      document.getElementById('add-to-cart-form').reset();
+    }
+    function renderCart() {
+      const cartList = document.getElementById('cart-list');
+      cartList.innerHTML = '';
+      cart.forEach((item, idx) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.product} (x${item.quantity})`;
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.onclick = () => { cart.splice(idx, 1); renderCart(); };
+        removeBtn.style.marginLeft = '1rem';
+        li.appendChild(removeBtn);
+        cartList.appendChild(li);
+      });
+    }
+    document.getElementById('submit-order-form').onsubmit = function(e) {
+      e.preventDefault();
+      if (cart.length === 0) {
+        alert('Please add at least one item to your cart.');
+        return;
+      }
+      const name = document.getElementById('customer').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const comments = document.getElementById('comments').value.trim();
+      // Here you would send the order to your backend or email service
+      alert(`Order submitted!\nName: ${name}\nEmail: ${email}\nItems: ${cart.map(i => i.product + ' (x' + i.quantity + ')').join(', ')}\nComments: ${comments}`);
+      cart = [];
+      renderCart();
+      document.getElementById('submit-order-form').reset();
+    };
+  </script>
 </body>
 </html>
