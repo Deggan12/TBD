@@ -3,30 +3,271 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Bakery Name - About</title>
+  <title>Frosted Delights- About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <h1>Your Bakery Name</h1>
-      <ul>
-        <li><a href="index.html">Home</a></li>
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="logo">Frosted Delights</div>
+      <button class="hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
         <li><a href="menu.html">Menu</a></li>
-        <li><a href="order.html">Order</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
   <main>
+    <section class="hero">
+      <div class="hero-bg">
+        <!-- Decorative SVG blob -->
+        <svg width="100%" height="100%" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,200 Q200,100 400,200 T800,200 V400 H0 Z" fill="var(--mint)" opacity="0.35"/>
+        </svg>
+      </div>
+      <div class="hero-content">
+        <h1 class="fade-in">Baked with Love</h1>
+        <p class="fade-in" style="animation-delay:0.3s">Fresh, handcrafted cupcakes made locally.</p>
+        <a href="order.html" class="cta-btn fade-in" style="animation-delay:0.6s">Order Now</a>
+      </div>
+    </section>
     <section id="about">
       <h2>About Us</h2>
-      <p>Your Bakery Name is dedicated to providing fresh, delicious baked goods to our community. Our story began with a passion for baking and a love for sharing treats with friends and family.</p>
+      <p>Frosted Delights is dedicated to providing fresh, delicious baked goods to our community. Our story began with a passion for baking and a love for sharing treats with friends and family.</p>
+    </section>
+    <section class="featured-products">
+      <h2>Featured Cupcakes</h2>
+      <div class="product-list">
+        <div class="product-card" style="background: var(--cloud);">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Classic Vanilla Cupcake">
+          <h3>Classic Vanilla</h3>
+          <p>Fluffy vanilla cake topped with creamy buttercream and pastel sprinkles.</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" style="background: var(--butter);">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Chocolate Dream Cupcake">
+          <h3>Chocolate Dream</h3>
+          <p>Rich chocolate cake with silky chocolate frosting and a touch of gold dust.</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" style="background: var(--mint);">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Strawberry Swirl Cupcake">
+          <h3>Strawberry Swirl</h3>
+          <p>Fresh strawberry puree swirled into vanilla cake, topped with pink frosting.</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" style="background: var(--cloud);">
+          <img src="https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?auto=format&fit=crop&w=400&q=80" alt="Salted Caramel Cupcake">
+          <h3>Salted Caramel</h3>
+          <p>Caramel cake with a gooey caramel center and a sprinkle of sea salt.</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" style="background: var(--butter);">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Lemon Zest Cupcake">
+          <h3>Lemon Zest</h3>
+          <p>Bright lemon cake with tangy lemon curd and a cloud of meringue.</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" style="background: var(--mint);">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Raspberry Bliss Cupcake">
+          <h3>Raspberry Bliss</h3>
+          <p>Moist vanilla cake with raspberry jam and a swirl of pink buttercream.</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+    <section class="about-baker">
+      <div class="about-text">
+        <h2>Meet the Baker</h2>
+        <p>Hi! I'm Emma, the heart and hands behind Frosted Delights. My passion for baking started in my grandmother's kitchen, where every treat was made with love and a sprinkle of joy. Today, I bring that same warmth and creativity to every cupcake, sharing sweet moments with our community one bite at a time.</p>
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=facearea&w=300&h=300&facepad=2&q=80" alt="The Baker at Frosted Delights">
+      </div>
+    </section>
+    <section class="menu-section">
+      <h2 class="menu-title">Frosted Delights By Yas</h2>
+      <div class="menu-columns">
+        <div class="menu-col menu-alacarte">
+          <h3>A la carte</h3>
+          <ul>
+            <li>Chocolate Fantasy</li>
+            <li>Frosted Lotus Biscoff</li>
+            <li>Vanilla Dream ft. Confetti</li>
+            <li>Cookies &amp; Cream Bliss</li>
+            <li>Red Velvet Delight</li>
+          </ul>
+        </div>
+        <div class="menu-col menu-packages">
+          <h3>Package Price</h3>
+          <ul>
+            <li>Half a dozen – <span class="menu-price">$15</span></li>
+            <li>Dozen – <span class="menu-price">$30</span></li>
+            <li>Two dozen – <span class="menu-price">$60</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu-addons">
+        <h3 class="addons-title">Add ons</h3>
+        <hr class="addons-divider" />
+        <div class="addons-columns">
+          <div class="addons-col">
+            <h4>Frosting</h4>
+            <ul>
+              <li>Chocolate</li>
+              <li>Cream Cheese</li>
+              <li>Classic Vanilla Buttercream</li>
+              <li>Cookies and Cream</li>
+              <li>Cookie Butter</li>
+            </ul>
+          </div>
+          <div class="addons-col addons-toppings">
+            <h4>Toppings</h4>
+            <ul>
+              <li>Kinder Bueno</li>
+              <li>Ferrero Rocher</li>
+              <li>Seasonal Fruits</li>
+              <li>Cake Toppers (Holidays, Celebrations)
+                <span class="addons-badge">Additional prices may vary</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="policies-section">
+      <h2 class="policies-title">Policies – Frosted Delights by Yas</h2>
+      <div class="policies-list">
+        <div class="policy-block">
+          <h3>Order Ahead</h3>
+          <ul>
+            <li>Standard orders: <strong>4 days</strong></li>
+            <li>Personalized orders: <strong>1 week</strong></li>
+          </ul>
+        </div>
+        <div class="policy-block">
+          <h3>Payment</h3>
+          <ul>
+            <li><strong>50% deposit</strong> is required to confirm your order</li>
+            <li>Not confirmed until deposit is received</li>
+            <li>Remaining balance is due at pickup or delivery (e-transfer or cash)</li>
+          </ul>
+        </div>
+        <div class="policy-block">
+          <h3>Pickup/Delivery</h3>
+          <ul>
+            <li>Pickup address shared day of</li>
+            <li>Delivery fee: <strong>$5–$15</strong> depending on distance</li>
+          </ul>
+        </div>
+        <div class="policy-block">
+          <h3>Cancellations</h3>
+          <ul>
+            <li>Cancel at least <strong>48h</strong> before to get refund</li>
+            <li>No refunds within 48h</li>
+          </ul>
+        </div>
+        <div class="policy-block">
+          <h3>Allergens</h3>
+          <ul>
+            <li>Cupcakes are made in a kitchen with nuts, gluten, and other allergens</li>
+          </ul>
+        </div>
+        <div class="policy-block">
+          <h3>Disclaimer</h3>
+          <ul>
+            <li>We can’t be responsible for damage after pickup or delivery</li>
+          </ul>
+        </div>
+      </div>
+      <div class="policies-footer">We’re here to make your cupcake dreams come true — <strong>DM us to order!</strong></div>
+    </section>
+    <section class="order-section">
+      <h2 class="order-title">Order Cupcakes</h2>
+      <div class="order-products">
+        <div class="order-card" data-product="Classic Vanilla" data-price="3">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Classic Vanilla Cupcake">
+          <h3>Classic Vanilla</h3>
+          <p class="order-price">$3</p>
+          <div class="order-qty">
+            <button class="qty-btn minus">–</button>
+            <span class="qty">0</span>
+            <button class="qty-btn plus">+</button>
+          </div>
+        </div>
+        <div class="order-card" data-product="Chocolate Dream" data-price="3">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Chocolate Dream Cupcake">
+          <h3>Chocolate Dream</h3>
+          <p class="order-price">$3</p>
+          <div class="order-qty">
+            <button class="qty-btn minus">–</button>
+            <span class="qty">0</span>
+            <button class="qty-btn plus">+</button>
+          </div>
+        </div>
+        <div class="order-card" data-product="Strawberry Swirl" data-price="3">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Strawberry Swirl Cupcake">
+          <h3>Strawberry Swirl</h3>
+          <p class="order-price">$3</p>
+          <div class="order-qty">
+            <button class="qty-btn minus">–</button>
+            <span class="qty">0</span>
+            <button class="qty-btn plus">+</button>
+          </div>
+        </div>
+        <div class="order-card" data-product="Salted Caramel" data-price="3">
+          <img src="https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?auto=format&fit=crop&w=400&q=80" alt="Salted Caramel Cupcake">
+          <h3>Salted Caramel</h3>
+          <p class="order-price">$3</p>
+          <div class="order-qty">
+            <button class="qty-btn minus">–</button>
+            <span class="qty">0</span>
+            <button class="qty-btn plus">+</button>
+          </div>
+        </div>
+        <div class="order-card" data-product="Lemon Zest" data-price="3">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Lemon Zest Cupcake">
+          <h3>Lemon Zest</h3>
+          <p class="order-price">$3</p>
+          <div class="order-qty">
+            <button class="qty-btn minus">–</button>
+            <span class="qty">0</span>
+            <button class="qty-btn plus">+</button>
+          </div>
+        </div>
+        <div class="order-card" data-product="Raspberry Bliss" data-price="3">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Raspberry Bliss Cupcake">
+          <h3>Raspberry Bliss</h3>
+          <p class="order-price">$3</p>
+          <div class="order-qty">
+            <button class="qty-btn minus">–</button>
+            <span class="qty">0</span>
+            <button class="qty-btn plus">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="open-cart-btn" aria-label="Open cart">🛒</button>
+      <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+          <h3>Your Cart</h3>
+          <button class="close-cart" aria-label="Close cart">&times;</button>
+        </div>
+        <ul id="cart-list"></ul>
+        <div class="cart-total">Total: $<span id="cart-total">0</span></div>
+        <button id="checkout-btn">Checkout</button>
+      </div>
     </section>
   </main>
   <footer>
-    <p>&copy; 2025 Your Bakery Name. All rights reserved.</p>
+    <p>&copy; 2025 Frosted Delights. All rights reserved.</p>
   </footer>
+  <script src="bakery.js"></script>
 </body>
 </html>
