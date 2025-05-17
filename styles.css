@@ -58,6 +58,87 @@ main {
   box-shadow: 0 4px 24px rgba(173, 20, 87, 0.07);
 }
 
+/* Responsive hero section */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem 1rem;
+  background: #fff0f6;
+  border-radius: 0 0 2rem 2rem;
+}
+
+/* Responsive best-sellers section */
+.best-sellers {
+  margin: 3rem 0;
+}
+
+.best-sellers .product-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(173,20,87,0.07);
+  padding: 1.5rem;
+  width: 270px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.best-sellers .product-card img {
+  width: 100%;
+  border-radius: 0.7rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.best-sellers .product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* About the Baker section */
+.about-baker {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 700px;
+  margin: 3rem auto 2rem auto;
+  background: #fff8f0;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(173,20,87,0.04);
+}
+
+.about-baker img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f8bbd0;
+}
+
+/* Testimonials section */
+.testimonials {
+  max-width: 900px;
+  margin: 3rem auto 2rem auto;
+}
+
+.testimonials blockquote {
+  background: #fff0f6;
+  border-radius: 1rem;
+  padding: 1.2rem 1.5rem;
+  color: #6d4c41;
+  font-style: italic;
+  box-shadow: 0 2px 8px rgba(173,20,87,0.04);
+}
+
+.testimonials .testimonial-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
 section {
   margin-bottom: 2.5rem;
 }
@@ -118,6 +199,22 @@ button[type="submit"]:hover, button[type="submit"]:focus {
   background: #6d4c41;
 }
 
+@media (max-width: 900px) {
+  main {
+    padding: 1rem;
+  }
+  .about-baker {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.2rem;
+  }
+  .best-sellers .product-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 @media (max-width: 700px) {
   nav {
     flex-direction: column;
@@ -125,9 +222,35 @@ button[type="submit"]:hover, button[type="submit"]:focus {
     padding: 1rem;
   }
   main {
+    padding: 0.5rem;
+  }
+  .about-baker {
     padding: 1rem;
+  }
+  .best-sellers .product-card {
+    width: 100%;
+    min-width: 0;
+  }
+  .testimonials .testimonial-list {
+    grid-template-columns: 1fr;
   }
   form {
     width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  nav h1 {
+    font-size: 1.3rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  .hero h2 {
+    font-size: 1.5rem !important;
+  }
+  .about-baker img {
+    width: 60px;
+    height: 60px;
   }
 }
