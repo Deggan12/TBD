@@ -11,6 +11,7 @@ body {
 header {
   background: #f8bbd0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: relative;
 }
 
 nav {
@@ -56,6 +57,25 @@ main {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(173, 20, 87, 0.07);
+}
+
+/* Hamburger menu styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.hamburger span {
+  height: 4px;
+  width: 28px;
+  background: #ad1457;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
 }
 
 /* Responsive hero section */
@@ -217,9 +237,45 @@ button[type="submit"]:hover, button[type="submit"]:focus {
 
 @media (max-width: 700px) {
   nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+  }
+  .hamburger {
+    display: flex;
+  }
+  nav ul {
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    width: 70vw;
+    max-width: 320px;
+    height: 100vh;
+    background: #fff8f0;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1rem;
+    gap: 2rem;
+    padding: 4rem 2rem 2rem 2rem;
+    box-shadow: 2px 0 16px rgba(173,20,87,0.08);
+    transition: left 0.3s;
+    z-index: 1000;
+  }
+  nav ul.open {
+    left: 0;
+  }
+  nav ul li {
+    width: 100%;
+  }
+  nav ul li a {
+    font-size: 1.2rem;
+    width: 100%;
+    display: block;
+    padding: 0.7rem 0;
+  }
+  body.menu-open {
+    overflow: hidden;
   }
   main {
     padding: 0.5rem;
