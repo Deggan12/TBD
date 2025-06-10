@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Frosted Delights - Menu</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Frosted Delights</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="menu">
+      <h2>Our Menu</h2>
+      <div class="menu-grid">
+        <!-- Example menu items, you can add more -->
+        <div class="menu-item" data-id="1" data-name="Chocolate Chip Cookies" data-price="8" data-desc="Crispy on the edges, chewy in the center, loaded with chocolate chips." data-img="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Chocolate Chip Cookies">
+          <h3>Chocolate Chip Cookies</h3>
+          <p>Crispy on the edges, chewy in the center, loaded with chocolate chips.</p>
+          <div class="price">$8/dozen</div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="menu-item" data-id="2" data-name="Cinnamon Rolls" data-price="12" data-desc="Soft, fluffy rolls swirled with cinnamon and topped with cream cheese icing." data-img="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Cinnamon Rolls">
+          <h3>Cinnamon Rolls</h3>
+          <p>Soft, fluffy rolls swirled with cinnamon and topped with cream cheese icing.</p>
+          <div class="price">$12/6 rolls</div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="menu-item" data-id="3" data-name="Banana Bread" data-price="10" data-desc="Moist, flavorful, and packed with ripe bananas and a hint of vanilla." data-img="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Banana Bread">
+          <h3>Banana Bread</h3>
+          <p>Moist, flavorful, and packed with ripe bananas and a hint of vanilla.</p>
+          <div class="price">$10/loaf</div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+    <!-- Cart Sidebar/Panel -->
+    <aside id="cart-panel" class="cart-panel">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button id="close-cart" aria-label="Close cart">&times;</button>
+      </div>
+      <ul id="cart-list"></ul>
+      <div class="cart-total">Total: $<span id="cart-total">0</span></div>
+      <button id="checkout-btn">Checkout</button>
+    </aside>
+    <button id="open-cart" class="open-cart-btn" aria-label="Open cart">
+      🛒 <span id="cart-count">0</span>
+    </button>
+    <!-- Modal for checkout (optional, simple) -->
+    <div id="checkout-modal" class="checkout-modal">
+      <div class="checkout-content">
+        <h3>Checkout</h3>
+        <form id="checkout-form">
+          <label for="customer">Your Name:</label>
+          <input type="text" id="customer" name="customer" required>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <label for="comments">Comments:</label>
+          <textarea id="comments" name="comments" placeholder="Any special requests?"></textarea>
+          <button type="submit">Submit Order</button>
+          <button type="button" id="cancel-checkout">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Your Bakery Name. All rights reserved.</p>
+  </footer>
+  <script>
+    // Cart logic
+    const menuItems = [
+      { id: 1, name: 'Chocolate Chip Cookies', price: 8, desc: 'Crispy on the edges, chewy in the center, loaded with chocolate chips.', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
+      { id: 2, name: 'Cinnamon Rolls', price: 12, desc: 'Soft, fluffy rolls swirled with cinnamon and topped with cream cheese icing.', img: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
+      { id: 3, name: 'Banana Bread', price: 10, desc: 'Moist, flavorful, and packed with ripe bananas and a hint of vanilla.', img: 'https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80' }
+    ];
+    let cart = [];
+    function updateCartCount() {
+      document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    }
+    function openCart() {
+      document.getElementById('cart-panel').classList.add('open');
+      document.body.classList.add('menu-open');
+    }
+    function closeCart() {
+      document.getElementById('cart-panel').classList.remove('open');
+      document.body.classList.remove('menu-open');
+    }
+    function renderCart() {
+      const cartList = document.getElementById('cart-list');
+      cartList.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, idx) => {
+        total += item.price * item.quantity;
+        const li = document.createElement('li');
+        li.innerHTML = `<img src="${item.img}" alt="${item.name}" style="width:40px;height:40px;border-radius:6px;margin-right:0.7rem;vertical-align:middle;"> <span style="font-weight:600;">${item.name}</span> <input type='number' min='1' value='${item.quantity}' style='width:45px;margin:0 0.5rem;' data-idx='${idx}' class='cart-qty'> x $${item.price} <button class='remove-item' data-idx='${idx}' style='margin-left:0.7rem;'>Remove</button>`;
+        cartList.appendChild(li);
+      });
+      document.getElementById('cart-total').textContent = total;
+      updateCartCount();
+      // Quantity change
+      cartList.querySelectorAll('.cart-qty').forEach(input => {
+        input.addEventListener('change', function() {
+          const idx = +this.dataset.idx;
+          let val = parseInt(this.value, 10);
+          if (val < 1) val = 1;
+          cart[idx].quantity = val;
+          renderCart();
+        });
+      });
+      // Remove item
+      cartList.querySelectorAll('.remove-item').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const idx = +this.dataset.idx;
+          cart.splice(idx, 1);
+          renderCart();
+        });
+      });
+    }
+    document.querySelectorAll('.add-to-cart').forEach((btn, i) => {
+      btn.addEventListener('click', function() {
+        const item = menuItems[i];
+        const found = cart.find(ci => ci.id === item.id);
+        if (found) {
+          found.quantity++;
+        } else {
+          cart.push({ ...item, quantity: 1 });
+        }
+        renderCart();
+        openCart();
+      });
+    });
+    document.getElementById('open-cart').onclick = openCart;
+    document.getElementById('close-cart').onclick = closeCart;
+    document.getElementById('checkout-btn').onclick = function() {
+      document.getElementById('checkout-modal').style.display = 'flex';
+    };
+    document.getElementById('cancel-checkout').onclick = function() {
+      document.getElementById('checkout-modal').style.display = 'none';
+    };
+    document.getElementById('checkout-form').onsubmit = function(e) {
+      e.preventDefault();
+      if (cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+      }
+      const name = document.getElementById('customer').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const comments = document.getElementById('comments').value.trim();
+      alert(`Order submitted!\nName: ${name}\nEmail: ${email}\nItems: ${cart.map(i => i.name + ' (x' + i.quantity + ')').join(', ')}\nComments: ${comments}`);
+      cart = [];
+      renderCart();
+      document.getElementById('checkout-modal').style.display = 'none';
+      document.getElementById('checkout-form').reset();
+    };
+    // Close modal on outside click
+    document.getElementById('checkout-modal').addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    // Initial render
+    renderCart();
+  </script>
+</body>
+</html>
