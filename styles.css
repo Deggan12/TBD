@@ -9,6 +9,28 @@
   --cloud: rgb(245, 245, 245);
 }
 
+/* Make the page go full width and remove any boxed layout */
+body, html, main {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: none;
+}
+
+/* Full-width section layout */
+.full-width {
+  width: 100%;
+  padding: 3rem 1rem;
+  background-color: #fff0f6;
+}
+
+/* Optional: content centering inside sections */
+.full-width > div {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
 body {
   font-family: 'Poppins', 'Open Sans', Arial, sans-serif;
   background: var(--cloud);
